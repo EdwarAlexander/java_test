@@ -14,8 +14,10 @@ class CuentaTest {
         Cuenta cuenta = new Cuenta("Andres", new BigDecimal("145.1234"));
         String esperado = "Andres";
         String actual = cuenta.getPersona();
-        assertEquals(esperado, actual);
-        assertTrue(actual.equals("Andres"));
+        assertNotNull(actual, () -> "La cuenta no puede ser nula");
+        assertEquals(esperado, actual, () -> "el nombre de la cuenta no es el que se esperaba: se esperaba " + esperado +
+                " sin embargo fue " + actual);
+        assertTrue(actual.equals("Andres"),()->"nombre cuenta esperaba debe ser igual a la real");
     }
 
     @Test
